@@ -107,7 +107,7 @@
         <thead>
           <tr>
             <th><b>Game's hash</b></th>
-            <th><b>Bust</b></th>
+            <th><b>Result</b></th>
           </tr>
         </thead>
         <tbody id="game_verify_table"></tbody>
@@ -154,9 +154,7 @@
         }).append(
           $('<td/>').text(hash)
         ).append(
-          $('<td/>').text(bust).attr({
-            'class': bust === 1.98 ? 'is-at-median' : bust > 1.98 ? 'is-over-median' : 'is-under-median'
-          })
+          $('<td/>').text(bust)
         ).appendToWithIndex($('#game_verify_table'), index);
         if (index >= $('#game_amount_input').val() - 1) {
           $('#game_hash_input').parent().removeClass('is-loading');
