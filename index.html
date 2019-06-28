@@ -115,6 +115,7 @@
     </div>
   </section>
     <script type="text/javascript">
+      const SALT = '00000000000000000005bcf4bcfe3a699dd7833839e593127885e2b1e80ceb10';
       var isVerifying = false;
       $('#game_verify_submit').on('click', () => {
         if (isVerifying) return;
@@ -126,7 +127,7 @@
         let prevHash = null;
         for (let i = 0; i < $('#game_amount_input').val(); i++) {
           let hash = String(prevHash ? CryptoJS.SHA256(String(prevHash)) : $('#game_hash_input').val());
-          let bust = gameResult(hash);
+          let bust = gameResult(hash, SALT);
           setTimeout(function() {
             addTableRow(hash, bust, i)
           }, i * 1);
